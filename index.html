@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/
+jquery.min.js"></script>
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+	  
+	.dropbtn {
+		background-color: #4CAF50;
+		color: white;
+		padding: 16px;
+		font-size: 16px;
+		border: none;
+		cursor: pointer;
+	}
+
+	.dropdown {
+		position: relative;
+		display: inline-block;
+	}
+
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		background-color: #f9f9f9;
+		min-width: 160px;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 1;
+	}
+
+	.dropdown-content a {
+		color: black;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+		overflow:auto
+	}
+
+	.dropdown-content a:hover {background-color: #f1f1f1}
+
+	.dropdown:hover .dropdown-content {
+		display: block;
+	}
+
+	.dropdown:hover .dropbtn {
+		background-color: #3e8e41;
+	}
+    </style>
+  </head>
+  <body>
+    <h1>Tweet Map by Pravar</h1>
+    <div id="map"></div>
+	<h1> </h1>
+	<h3>Hover over markers to view the tweets</h3>
+	<div class="dropdown">
+      <button class="dropbtn">Select a topic to view Tweets</button>
+		<div class="dropdown-content">
+		 <a href="#" onclick="Modi()" >Modi</a>
+		 <a href="#" onclick="Trump()">Trump</a>
+		 <a href="#" onclick="India()">India</a>
+		 <a href="#" onclick="NewYork()">New York</a>
+		 <a href="#" onclick="English()">English</a>
+		 <a href="#" onclick="London()">London</a>
+	    </div>
+    </div>
+    <script>
+	  var map;
+	  var markers = [];
+
+      function initMap() {
+        var uluru = {lat: 20.5937, lng: 78.9629};
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 3,
+          center: uluru
+        });
+       
+      }
+	  function Modi(){
+			deleteMarkers();
+			var myURL = 'http://search-twittermap-xtha2ry22rh6ubxdcrtkmhftla.us-east-1.es.amazonaws.com/twitter/_search?q=modi';
+			markMap(myURL);
+	  }
+	  function Trump(){
+			deleteMarkers();
+			var myURL = 'http://search-twittermap-xtha2ry22rh6ubxdcrtkmhftla.us-east-1.es.amazonaws.com/twitter/_search?q=trump';
+			markMap(myURL);
+	  }
+	  function India(){
+			deleteMarkers();
+			var myURL = 'http://search-twittermap-xtha2ry22rh6ubxdcrtkmhftla.us-east-1.es.amazonaws.com/twitter/_search?q=India';
+			markMap(myURL);
+	  }
+	  function NewYork(){
+			deleteMarkers();
+			var myURL = 'http://search-twittermap-xtha2ry22rh6ubxdcrtkmhftla.us-east-1.es.amazonaws.com/twitter/_search?q=NewYork';
+			markMap(myURL);
+	  }
+	  function English(){
+			deleteMarkers();
+			var myURL = 'http://search-twittermap-xtha2ry22rh6ubxdcrtkmhftla.us-east-1.es.amazonaws.com/twitter/_search?q=english';
+			markMap(myURL);
+	  }
+	  function London(){
+			deleteMarkers();
+			var myURL = 'http://search-twittermap-xtha2ry22rh6ubxdcrtkmhftla.us-east-1.es.amazonaws.com/twitter/_search?q=london';
+			markMap(myURL);
+	  }
+	  
+	  
+	  
+	  function markMap(myURL){
+		
+			var query = {
+					size:1000
+				};
+				$.ajax({
+                    url: myURL,
+                    type: "Get",
+                    dataType: 'json',
+					data: query,
+                    success: function( data ) { 
+					//jsonData=data;
+					for(var i=0;i< data.hits.total; i++){
+						//alert(data.hits.total);
+						//var title = String(data.hits.hits[i]._source.text);
+						var str = String(data.hits.hits[i]._source.coordinates.coordinates);
+						var res = str.split(",");
+						var lon = res[0];
+						var lat = res[1];
+						var latLng = new google.maps.LatLng(parseFloat(lat),parseFloat(lon));
+						var marker = new google.maps.Marker({
+						position: latLng,
+						map: map,
+						title: data.hits.hits[i]._source.text
+						});
+						markers.push(marker);
+						//alert(res);
+					}
+					//
+					}
+                  });
+	  }
+	  
+	  // Removes the markers from the map, but keeps them in the array.
+      function clearMarkers() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(null);
+        }
+      }
+
+	  // Deletes all markers in the array by removing references to them.
+      function deleteMarkers() {
+        clearMarkers();
+        markers = [];
+      }
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEJFD4Z3qX0OgDyKfNnXliLofMSSZEXww&callback=initMap">
+    </script>
+  </body>
+</html>
