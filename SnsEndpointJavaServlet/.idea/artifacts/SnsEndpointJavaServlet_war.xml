@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SnsEndpointJavaServlet:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/SnsEndpointJavaServlet_war</output-path>
+    <root id="archive" name="SnsEndpointJavaServlet_war.war">
+      <element id="artifact" artifact-name="SnsEndpointJavaServlet:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Jersey-2.2" />
+          <element id="library" level="project" name="jackson" />
+          <element id="library" level="project" name="apache-commons-codec-1.9" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

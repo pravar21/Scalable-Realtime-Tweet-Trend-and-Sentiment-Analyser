@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="hbc">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/libs/hbc" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/libs/hbc" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/libs/hbc" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/libs/hbc" recursive="false" type="SOURCES" />
+  </library>
+</component>

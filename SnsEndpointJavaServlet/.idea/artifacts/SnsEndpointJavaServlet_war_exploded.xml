@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="SnsEndpointJavaServlet:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/SnsEndpointJavaServlet_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="SnsEndpointJavaServlet/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="SnsEndpointJavaServlet" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

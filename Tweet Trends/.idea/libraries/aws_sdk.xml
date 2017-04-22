@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="aws-sdk">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/libs/1.11.89/lib" />
+      <root url="file://$PROJECT_DIR$/libs/1.11.89/third-party/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/libs/1.11.89/lib" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/libs/1.11.89/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/libs/1.11.89/third-party/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/libs/1.11.89/lib" recursive="false" type="SOURCES" />
+  </library>
+</component>
